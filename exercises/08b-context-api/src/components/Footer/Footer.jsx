@@ -1,8 +1,8 @@
 // Import what you need from React
-import React from "react";
+import React, { useState, useContext } from "react";
 import Languages from "../Languages/Languages";
 import translations from "./FooterTranslations.json";
-// Import "TranslatorContext"
+import TranslatorContext from "../contexts/TranslatorContext";
 
 function Footer() {
   /**

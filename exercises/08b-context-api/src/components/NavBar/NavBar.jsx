@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useContext } from "react";
 import Login from "../Login/Login";
 
 function NavBar() {

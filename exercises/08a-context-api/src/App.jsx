@@ -3,46 +3,38 @@ import "./App.css";
 import translations from "./assets/translations.json";
 
 /**
- * Declare createContext() here.
+ * Initializes the Context API. Think of this as a storage bin or cabinet
+ * that stores state that is shared between components.
  */
+const TranslatorContext = createContext();
 
 function App() {
   /**
-   * Set state here. (See useState in "CreateAccount" below.)
+   * State should be set in the parent or a higher level component.
    */
-
+  const [language, setLanguage] = useState("en");
   /**
-   * You will need to return more than just <CreateAccount />.
+   * We are wrapping the child component <CreateAccount /> in the <TranslatorContext.Provider /> and storing "language" and "setLanguage" inside of the "TranslatorContext".
+   * You must use `value={"what you are storing"}`.
+   *
+   * This is a similar idea to lifting state up, where you would have a parent pass state ("language") and the update function ("setLanguage") as props.
+   * e.g. <CreateAccount language={language} setLanguage={setLanguage} />
    */
-  return <CreateAccount />;
+  return (
+    <TranslatorContext.Provider value={[language, setLanguage]}>
+      <CreateAccount />
+    </TranslatorContext.Provider>
+  );
 }
 
 function CreateAccount() {
   /**
-   * You will need to replace "useState" with something else.
+   * useContext("TranslatorContext") returns whatever we stored inside of "TranslatorContext".
+   * In this case, we stored [language, setLanguage] with the line
+   * `<TranslatorContext.Provider value={[language, setLanguage]}>`
    */
-  const [language, setLanguage] = useState("en");
-
-  /**
-   * @see src/assets/translations.json
-   * @type {Object} this is an object of translations for a given language.
-   * If "language" is "en", it will be English translations.
-   * If "language" is "es", it will be Spanish translations.
-   * @example
-   * const t = translations["es"];
-   * console.log(t);
-   * // Result:
-   * {
-   *   "Create a New Account": "Crea una cuenta",
-   *   "It’s quick and easy.": "Es rápido y fácil.",
-   *    // ...
-   * }
-   */
+  const [language, setLanguage] = useContext(TranslatorContext);
   const t = translations[language];
-
-  /**
-   * You will not need to change anything below this line.
-   */
   return (
     <div className="container pt-4 pb-4">
       <div className="d-flex justify-content-between">
