@@ -1,0 +1,29 @@
+/* myStyle.css */
+body {
+  background-color: cornsilk;
+}
+h1 {
+  color: blue;
+}
+
+p {
+  color: #333300;
+  text-align: left;
+  border: 3px groove;
+}
+retroheader table,
+icons {
+  color: organge;
+}
+
+tableheaders table,
+th {
+  color: red;
+}
+tablebuttons table,
+th {
+  text-align: center;
+}
+table {
+  size: 100%;
+}
