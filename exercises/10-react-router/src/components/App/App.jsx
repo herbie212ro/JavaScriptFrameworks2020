@@ -9,10 +9,11 @@
  *
  * First, you will need to import the packages you need from React Router
  */
-
 import React from "react";
-// import some things from React Router
+import { Switch, Route } from "react-router-dom";
 import Home from "../Home/Home";
+
+// import some things from React Router
 import Category from "../Category/Category";
 
 function App() {
@@ -28,9 +29,19 @@ function App() {
   return (
     <>
       <div className="bg-success text-white pt-1 pb-1 mb-3">
-        <h1 className="container h2">NoName E-Commerce</h1>
+        <h1 className="container h2">
+          <a href="/">Products E-Commerce</a>
+        </h1>
       </div>
-      <main className="container mb-4">{/* Complete me */}</main>
+      <main className="container mb-4">
+        {
+          <Switch>
+            <Route path="/category/:category" component={Category} />
+
+            <Route exact path="/" component={Home} />
+          </Switch>
+        }
+      </main>
     </>
   );
 }

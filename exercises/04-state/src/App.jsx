@@ -1,5 +1,7 @@
 import React from "react";
 import "./App.css";
+import LessText from "./Compenents/LessText";
+
 // Import LessText here
 // Import CharacterCount here
 
@@ -8,7 +10,12 @@ function App() {
     <>
       <div className="container pt-4 pb-4">
         <h2 className="h3">Challenge 1 - Less Text</h2>
-        {/* Add LessText with props here */}
+        {
+          <LessText
+            text={"I think she's cute and fly fishs during the day or night."}
+            maxLength={20}
+          />
+        }
       </div>
       <div className="bg-secondary text-white pt-4 pb-4 mb-4">
         <div className="container">

@@ -1,7 +1,11 @@
 import React from "react";
-var value = "Jamal";
+var value = "";
 function welcome(props) {
-  return <div>Welcome {name}}</div>;
+  //console.log(alert("value " + value));
+  //console.log(alert("props " + props));
+  value = props === "" ? "User" : props;
+
+  return <div>Hello, {value}</div>;
 }
 
 export default welcome;
