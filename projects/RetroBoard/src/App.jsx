@@ -7,9 +7,8 @@ function App() {
   return (
     <div>
       <h1 className="#retroheader"> Retro Board</h1>
-      <RetroBoard>
-        <div>{RetroBoard("Herbie")}</div>
-      </RetroBoard>
+
+      <div>{RetroBoard("Herbie")}</div>
     </div>
   );
 }

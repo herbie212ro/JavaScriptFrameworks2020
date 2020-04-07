@@ -4,7 +4,7 @@ export const RetroContext = createContext();
 
 export const RetroProvider = ({ children }) => {
   const [state, setState] = useState({
-    RetroData: []
+    RetroData: [],
   });
   //console.log(state);
   return (

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, Usecontext } from "react";
 import { RetroContext } from "../context/RetroContext";
 import "../App.css";
 
@@ -6,35 +6,42 @@ const RetroBoard = () => {
   const [list, setList] = useState([
     {
       retroList: "My first assignment",
-      RetroCategory: 0
+      RetroCategory: 0,
     },
     {
       retroList: "My second assignment",
-      RetroCategory: 0
+      RetroCategory: 0,
     },
     {
       retroList: "My third assignment",
-      RetroCategory: 0
+      RetroCategory: 0,
     },
     {
       retroList: "My forth assignment",
-      RetroCategory: 0
-    }
+      retroCategory: 1,
+    },
   ]);
 
   const addToList = () => {
-    React.setList([...list, ""]);
+    setList([...list, ""]);
+
+    console.log("addtolist ", list);
   };
-  const updateList = (userInput, index) => {
+  const updateList = (userInput, category, index) => {
     const copyOfList = [...list];
-    copyOfList[index] = userInput;
+    copyOfList[index] = { retroList: userInput, retroCategory: category };
+
+    // copyOfList[index] = { retroCategory: category };
     setList(copyOfList);
+    console.log("updateList ");
+    console.log({ list });
   };
   /*
   const deleteFromList = () => {
     return console.log("Deleted from list");
   }; */
-  const deleteFromList = index => {
+  const deleteFromList = (index) => {
+    console.log("deletefromlist index", index);
     setList(list.filter((item, currentIndex) => currentIndex !== index));
   };
   const previousCategory = () => {
@@ -48,7 +55,7 @@ const RetroBoard = () => {
     <div>
       <table>
         <tr>
-          <th className="#tableheaders">Went Well</th>
+          <th className="tableheaders">Went Well</th>
         </tr>
         <tr>
           <th>
@@ -63,7 +70,11 @@ const RetroBoard = () => {
               return (
                 <div>
                   <tr>
-                    <td>{item.retroList}</td>
+                    <input
+                      value={item.retroList}
+                      placeholder="Enter Card info"
+                      onChange={(e) => updateList(e.target.value, 0, index)}
+                    />
                   </tr>
                   <tr>
                     <div className="#icons">
@@ -71,7 +82,10 @@ const RetroBoard = () => {
                         <button className="#icons" onClick={previousCategory}>
                           &#60;
                         </button>
-                        <button className="#icons" onClick={deleteFromList}>
+                        <button
+                          className="#icons"
+                          onClick={() => deleteFromList(index)}
+                        >
                           &#120;
                         </button>
                         <button className="#icons" onClick={NextCategory}>
