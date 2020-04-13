@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import LoggedInContent from "../LoggedInContent/LoggedInContent";
 import axios from "axios";
 import Cookies from "js-cookie";
-
 // You may need to import additional things here
 
 function App() {
@@ -29,6 +28,7 @@ function App() {
   const login = token => {
     console.log("in login");
     localStorage.setItem("token", token);
+    Cookies.set("token", token, { expires: 1 });
     setIsLoading(true);
     setIsLoggedIn(true);
 
@@ -40,6 +40,7 @@ function App() {
   const logout = () => {
     console.log("in logout");
     localStorage.removeItem("token");
+    Cookies.remove("token");
     setIsLoggedIn(false);
     setIsLoading(false);
     setUsername("");

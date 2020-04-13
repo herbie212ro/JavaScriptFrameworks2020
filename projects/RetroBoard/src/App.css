@@ -1,11 +1,45 @@
 /* myStyle.css */
 body {
-  background-color: cornsilk;
+  background-color: lightgreen;
 }
-h1 {
+table {
+  color: black;
+  border: 10px;
+  width: 30%;
+  float: left;
+  padding-left: 20px;
+  padding-top: 5px;
+}
+
+table tr {
+  background-color: black;
+  max-width: 500px;
+}
+
+th {
+  color: red;
+  background-color: yellow;
+}
+td {
+  background-color: lightpink;
+}
+
+textarea {
+  background-color: blue;
+}
+.leftButton {
+  background-color: olive;
+}
+
+.deleteButton {
+  background-color: black;
+}
+.rightButton {
+  background-color: red;
+}
+.icons {
   color: blue;
 }
-.table {
-  color: black;
-  border-width: 30px;
+.buttonRow {
+  color: yellow;
 }

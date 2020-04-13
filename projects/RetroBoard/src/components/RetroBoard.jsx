@@ -13,33 +13,36 @@ const RetroBoard = () => {
       RetroCategory: 0,
     },
     {
+      retroList: "My second assignment",
+      RetroCategory: 1,
+    },
+    {
       retroList: "My third assignment",
-      RetroCategory: 0,
+      RetroCategory: 2,
     },
     {
       retroList: "My forth assignment",
-      retroCategory: 1,
+      RetroCategory: 1,
+    },
+    {
+      retroList: "My forth assignment",
+      RetroCategory: 2,
     },
   ]);
 
-  const addToList = () => {
-    setList([...list, ""]);
+  const addToList = (index) => {
+    setList([...list], { retroList: "", RetroCategory: index });
 
     console.log("addtolist ", list);
   };
   const updateList = (userInput, category, index) => {
-    const copyOfList = [...list];
-    copyOfList[index] = { retroList: userInput, retroCategory: category };
+    Object.assign(list, { retroList: "", RetroCategory: index });
 
-    // copyOfList[index] = { retroCategory: category };
-    setList(copyOfList);
-    console.log("updateList ");
-    console.log({ list });
+    // setList(copyOfList);
+    // console.log("updateList ");
+    // console.log({ list });
   };
-  /*
-  const deleteFromList = () => {
-    return console.log("Deleted from list");
-  }; */
+
   const deleteFromList = (index) => {
     console.log("deletefromlist index", index);
     setList(list.filter((item, currentIndex) => currentIndex !== index));
@@ -47,9 +50,20 @@ const RetroBoard = () => {
   const previousCategory = () => {
     return alert("Previous Category");
   };
-  const NextCategory = () => {
-    return alert("Next Category");
+  const NextCategory = (index) => {
+    return console.log(index);
   };
+
+  const Wentwell = list.filter(function (item) {
+    return item.RetroCategory === 0;
+  });
+  const ToImprove = list.filter(function (item) {
+    return item.RetroCategory === 1;
+  });
+
+  const ActionItem = list.filter(function (item) {
+    return item.RetroCategory === 2;
+  });
 
   return (
     <div>
@@ -59,36 +73,139 @@ const RetroBoard = () => {
         </tr>
         <tr>
           <th>
+            <button className="#icons" onClick={() => addToList(0)}>
+              &#10133;
+            </button>
+          </th>
+        </tr>
+        <tr>
+          <td className="wentWell">
+            {Wentwell.map((item, index) => {
+              return (
+                <div>
+                  <tr>
+                    <textarea
+                      value={item.retroList}
+                      onChange={(e) => updateList(e.target.value, 0, index)}
+                    />
+                  </tr>
+                  <tr>
+                    <div>
+                      <span className="buttonRow">
+                        <button
+                          className="leftButton"
+                          onClick={previousCategory}
+                        >
+                          &#60;
+                        </button>
+                        <button
+                          className="deleteButton"
+                          onClick={() => deleteFromList(index)}
+                        >
+                          &#120;
+                        </button>
+                        <button className="rightButton" onClick={NextCategory}>
+                          &#62;
+                        </button>
+                      </span>
+                    </div>
+                  </tr>
+                </div>
+              );
+            })}
+          </td>
+        </tr>
+      </table>
+      <table>
+        <tr>
+          <th className="tableheaders">To Improve</th>
+        </tr>
+        <tr>
+          <th>
             <button className="#icons" onClick={addToList}>
               &#10133;
             </button>
           </th>
         </tr>
         <tr>
-          <td className="#wentWell">
-            {list.map((item, index) => {
+          <td className="To Improve">
+            {ToImprove.map((item, index) => {
               return (
                 <div>
                   <tr>
-                    <input
+                    <textarea
                       value={item.retroList}
-                      placeholder="Enter Card info"
                       onChange={(e) => updateList(e.target.value, 0, index)}
                     />
                   </tr>
                   <tr>
-                    <div className="#icons">
-                      <span className="#icons">
-                        <button className="#icons" onClick={previousCategory}>
+                    <div>
+                      <span className="buttonRow">
+                        <button
+                          className="leftButton"
+                          onClick={previousCategory}
+                        >
                           &#60;
                         </button>
                         <button
-                          className="#icons"
+                          className="deleteButton"
                           onClick={() => deleteFromList(index)}
                         >
                           &#120;
                         </button>
-                        <button className="#icons" onClick={NextCategory}>
+                        <button
+                          className="rightButton"
+                          onClick={NextCategory(index)}
+                        >
+                          &#62;
+                        </button>
+                      </span>
+                    </div>
+                  </tr>
+                </div>
+              );
+            })}
+          </td>
+        </tr>
+      </table>
+      <table>
+        <tr>
+          <th className="tableheaders">Action Items</th>
+        </tr>
+        <tr>
+          <th>
+            <button className="#icons" onClick={addToList}>
+              &#10133;
+            </button>
+          </th>
+        </tr>
+        <tr>
+          <td className="To Improve">
+            {ActionItem.map((item, index) => {
+              return (
+                <div>
+                  <tr>
+                    <textarea
+                      value={item.retroList}
+                      onChange={(e) => updateList(e.target.value, 2, index)}
+                    />
+                  </tr>
+                  <tr>
+                    <div>
+                      <span className="buttonRow">
+                        <button
+                          className="leftButton"
+                          onClick={previousCategory}
+                        >
+                          &#60;
+                        </button>
+                        <button
+                          className="deleteButton"
+                          onClick={() => deleteFromList(index)}
+                        >
+                          &#120;
+                        </button>
+                        <button className="rightButton" onClick={NextCategory}>
                           &#62;
                         </button>
                       </span>

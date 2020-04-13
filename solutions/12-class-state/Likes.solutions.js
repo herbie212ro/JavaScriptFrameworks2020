@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-//import "./Likes.css";
+// Deleted Likes.css (Sorry, it shouldn't have been there)
 
 class Likes extends Component {
   state = {
@@ -12,8 +12,7 @@ class Likes extends Component {
    */
 
   like = () => {
-    this.setstate.likes = this.setState({ likes: this.state.likes + 1 });
-    console.log(this.state.likes);
+    this.setState({ likes: this.state.likes + 1 });
   };
 
   render() {
@@ -23,10 +22,8 @@ class Likes extends Component {
      */
     return (
       <div className="container mt-4 h1">
-        <h3>Likes</h3>
-        console.log("testing");
-        <button type="button" onclick="alert('Hello world!')">
-          Click Me!
+        <button className="btn btn-light" onClick={this.like}>
+          {this.state.likes} Likes
         </button>
       </div>
     );

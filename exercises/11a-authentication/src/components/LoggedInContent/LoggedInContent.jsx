@@ -1,17 +1,28 @@
 // You may need to import additional things here
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 function LoggedInContent(props) {
   const [movies, setMovies] = useState({});
   const [errorMessage, setErrorMessage] = useState("");
-  import Cookies from "js-cookie";
 
   /**
    * Make an AJAX request to http://localhost:7000/jwt/movies to get a list of movies.
    * Be sure to provide the token in the AJAX request.
    */
-
-  axios.return(
+  const token = localStorage.getItem("token");
+  console.log(token);
+  useEffect(() => {
+    axios("http://localhost:7000/jwt/movies", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`
+      }
+    })
+      .then(resp => setMovies(resp.data))
+      .catch(mess => setErrorMessage("Problem Houston"));
+  }, [token]);
+  return (
     <div className="container mt-2 mb-5">
       <div className="d-flex justify-content-between">
         <h1 className="h2">You are logged in!</h1>
