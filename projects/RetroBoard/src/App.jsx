@@ -8,7 +8,7 @@ function App() {
     <div>
       <h1 className="#retroheader"> Retro Board</h1>
 
-      <div>{RetroBoard("Herbie")}</div>
+      <div>{RetroBoard("RetroBoard")}</div>
     </div>
   );
 }

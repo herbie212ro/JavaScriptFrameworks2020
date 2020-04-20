@@ -8,31 +8,25 @@ table {
   width: 30%;
   float: left;
   padding-left: 20px;
-  padding-top: 5px;
-}
-
-table tr {
-  background-color: black;
-  max-width: 500px;
 }
 
 th {
-  color: red;
-  background-color: yellow;
+  color: black;
+  background-color: lightblue;
 }
 td {
-  background-color: lightpink;
+  background-color: lightcyan;
 }
 
 textarea {
-  background-color: blue;
+  background-color: pink;
 }
 .leftButton {
   background-color: olive;
 }
 
 .deleteButton {
-  background-color: black;
+  background-color: orange;
 }
 .rightButton {
   background-color: red;
