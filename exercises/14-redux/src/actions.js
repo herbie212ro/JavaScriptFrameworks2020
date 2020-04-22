@@ -2,26 +2,38 @@ import * as types from "./constants/actionTypes";
 
 export const increaseCount = () => {
   return {
-    type: types.INCREASE_COUNT
+    type: types.INCREASE_COUNT,
   };
 };
 
 export const decreaseCount = () => {
-  // Complete me
+  return {
+    type: types.DECREASE_COUNT,
+  };
 };
 
 export const toggle = () => {
-  // Complete me
+  return {
+    type: types.TOGGLEVISIBILITY,
+  };
 };
 
-export const pickColor = color => {
-  // Complete me
+export const pickColor = (color) => {
+  return {
+    type: types.WHATCOLOR,
+    color: color,
+  };
 };
 
-export const setInput = todoInput => {
-  // Complete me
+export const setInput = (todoInput) => {
+  return {
+    type: types.TODOINPUT,
+    todoInput: todoInput,
+  };
 };
 
 export const addTodo = () => {
-  // Complete me
+  return {
+    type: types.ADDTODO,
+  };
 };

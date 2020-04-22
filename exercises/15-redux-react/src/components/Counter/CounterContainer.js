@@ -6,7 +6,8 @@
 
 /**
  * Import something form Redux here
- */
+ */ import { connect } from "react-redux";
+
 import Counter from "./Counter";
 
 /**
@@ -16,12 +17,17 @@ import Counter from "./Counter";
 /**
  * Complete this function. You may need to pass in arguements
  */
-function mapStateToProps() {}
+function mapStateToProps(state) {}
+return {
+  counter: state.Counter,
+};
 
 /**
  * Complete this function. You may need to pass in arguements
  */
-function mapDispatchToProps() {}
+function mapDispatchToProps(dispatch) {
+  return {};
+}
 
 /**
  * Refactor this so that you are connecting the Counter to the Redux store.

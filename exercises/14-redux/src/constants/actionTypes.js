@@ -1,5 +1,6 @@
 export const INCREASE_COUNT = "INCREASE_COUNT";
-
-/**
- * Add more action types here
- */
+export const DECREASE_COUNT = "DECREASE_COUNT";
+export const TOGGLEVISIBILITY = "TOGGLEVISIBILITY";
+export const WHATCOLOR = "WHATCOLOR";
+export const TODOINPUT = "TODOINPUT";
+export const ADDTODO = "ADDTODO";

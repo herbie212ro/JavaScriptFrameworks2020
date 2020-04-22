@@ -1,7 +1,7 @@
 import React from "react";
 
 function App(props) {
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     props.addTodo();
   };
@@ -44,6 +44,7 @@ function App(props) {
           className="btn btn-primary btn-danger mr-1"
           onClick={() => props.pickColor("red")}
         >
+          {console.log({ props })}
           {props.color && props.color === "red" ? "✓ " : null}
           Red
         </button>
@@ -73,7 +74,7 @@ function App(props) {
               placeholder="Enter Todo"
               className="form-control"
               value={props.todoInput || ""}
-              onChange={e => props.setInput(e.target.value)}
+              onChange={(e) => props.setInput(e.target.value)}
             />
             <button type="submit" className="btn btn-secondary">
               Add Todo
@@ -81,7 +82,7 @@ function App(props) {
           </div>
         </form>
         <ul className="list-group mt-2">
-          {props.todos.map(todo => {
+          {props.todos.map((todo) => {
             return <li className="list-group-item">{todo}</li>;
           })}
         </ul>

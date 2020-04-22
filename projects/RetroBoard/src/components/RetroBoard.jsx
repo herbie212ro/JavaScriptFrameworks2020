@@ -1,42 +1,27 @@
-import React, { useState, Usecontext } from "react";
+import React, { useContext } from "react";
 import { RetroContext } from "../context/RetroContext";
 import "../App.css";
 
 const RetroBoard = () => {
-  const [list, setList] = useState([
-    {
-      retroList: "My first assignment",
-      RetroCategory: 0,
-    },
-    {
-      retroList: "My second assignment",
-      RetroCategory: 0,
-    },
-    {
-      retroList: "My third assignment",
-      RetroCategory: 1,
-    },
-    {
-      retroList: "My forth assignment",
-      RetroCategory: 2,
-    },
-    {
-      retroList: "My fifth assignment",
-      RetroCategory: 1,
-    },
-    {
-      retroList: "My six assignment",
-      RetroCategory: 2,
-    },
-  ]);
+  const [list, setList] = useContext(RetroContext);
 
   const addToList = (index) => {
-    setList([...list, { retroList: "", RetroCategory: index }]);
+    setList([
+      ...list,
+      {
+        retroList: "",
+        RetroCategory: index,
+        id: list.length,
+        likes: 0,
+        disLikes: 0,
+      },
+    ]);
   };
 
   const updateList = (userInput, category, index) => {
     const newInput = [...list];
     newInput[index].retroList = userInput;
+    newInput[index].id = newInput.length;
     setList(newInput);
   };
 
@@ -65,6 +50,17 @@ const RetroBoard = () => {
     }
   };
 
+  const upLikes = (index) => {
+    const upLike = [...list];
+    upLike[index].likes++;
+    setList(upLike);
+  };
+  const downLikes = (index) => {
+    const downLikes = [...list];
+    downLikes[index].disLikes++;
+    setList(downLikes);
+  };
+
   return (
     <div>
       <table>
@@ -84,7 +80,7 @@ const RetroBoard = () => {
               {list.map((item, index) => {
                 if (item.RetroCategory === 0) {
                   return (
-                    <div key={`cardkey-${index}`}>
+                    <div key={item.index}>
                       <tr>
                         <textarea
                           value={item.retroList}
@@ -112,6 +108,19 @@ const RetroBoard = () => {
                             >
                               &#62;
                             </button>
+                            <button
+                              className="dislike"
+                              onClick={() => downLikes(index)}
+                            >
+                              {item.disLikes > 0 ? item.disLikes : null}{" "}
+                              Dislikes
+                            </button>
+                            <button
+                              className="like"
+                              onClick={() => upLikes(index)}
+                            >
+                              Likes {item.likes > 0 ? item.likes : null}
+                            </button>
                           </span>
                         </div>
                       </tr>
@@ -136,11 +145,11 @@ const RetroBoard = () => {
             </th>
           </tr>
           <tr>
-            <td className="To Improve">
+            <td className="ToImprove">
               {list.map((item, index) => {
                 if (item.RetroCategory === 1)
                   return (
-                    <div key={`cardkey-${index}`}>
+                    <div key={item.index}>
                       <tr>
                         <textarea
                           value={item.retroList}
@@ -168,6 +177,19 @@ const RetroBoard = () => {
                             >
                               &#62;
                             </button>
+                            <button
+                              className="dislike"
+                              onClick={() => downLikes(index)}
+                            >
+                              {item.disLikes > 0 ? item.disLikes : null}{" "}
+                              Dislikes
+                            </button>
+                            <button
+                              className="like"
+                              onClick={() => upLikes(index)}
+                            >
+                              Likes {item.likes > 0 ? item.likes : null}
+                            </button>
                           </span>
                         </div>
                       </tr>
@@ -191,11 +213,11 @@ const RetroBoard = () => {
             </th>
           </tr>
           <tr>
-            <td className="To Improve">
+            <td className="actionItem">
               {list.map((item, index) => {
                 if (item.RetroCategory === 2)
                   return (
-                    <div key={`cardkey-${index}`}>
+                    <div key={item.index}>
                       <tr>
                         <textarea
                           value={item.retroList}
@@ -222,6 +244,19 @@ const RetroBoard = () => {
                               onClick={() => NextCategory(index)}
                             >
                               &#62;
+                            </button>
+                            <button
+                              className="dislike"
+                              onClick={() => downLikes(index)}
+                            >
+                              {item.disLikes > 0 ? item.disLikes : null} {""}
+                              Dislikes
+                            </button>
+                            <button
+                              className="like"
+                              onClick={() => upLikes(index)}
+                            >
+                              Likes {item.likes > 0 ? item.likes : null}
                             </button>
                           </span>
                         </div>
